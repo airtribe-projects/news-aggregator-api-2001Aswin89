@@ -1,6 +1,7 @@
 const axios = require("axios");
-
+const { getCache, setCache } = require("../utils/cache");
 const BASE_URL = "https://gnews.io/api/v4/search";
+
 
 async function fetchNews({ keywords = [], categories = [] }) {
     const queryParts = [...keywords, ...categories];
@@ -9,6 +10,16 @@ async function fetchNews({ keywords = [], categories = [] }) {
         queryParts.length > 0
             ? queryParts.join(" OR ")
             : "latest news";
+
+    const cacheKey = query.toLowerCase();
+
+    const cached = getCache(cacheKey);
+    if (cached) {
+        console.log("CACHE HIT");
+        return cached;
+    }
+
+    console.log("CACHE MISS");
 
     const response = await axios.get(BASE_URL, {
         params: {
@@ -19,7 +30,7 @@ async function fetchNews({ keywords = [], categories = [] }) {
         },
     });
 
-    return response.data.articles.map(article => ({
+    const transformed = response.data.articles.map(article => ({
         title: article.title,
         description: article.description,
         url: article.url,
@@ -27,6 +38,9 @@ async function fetchNews({ keywords = [], categories = [] }) {
         source: article.source?.name,
         publishedAt: article.publishedAt,
     }));
-}
 
+    setCache(cacheKey, transformed);
+
+    return transformed;
+}
 module.exports = { fetchNews };
