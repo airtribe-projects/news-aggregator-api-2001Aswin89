@@ -1,6 +1,6 @@
 const service = require("../services/articleService");
 
-async function saveArticle(req, res) {
+async function saveArticle(req, res, next) {
     try {
         const userId = req.user.id;
 
@@ -11,11 +11,12 @@ async function saveArticle(req, res) {
             article,
         });
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        // res.status(400).json({ message: err.message });
+        next(err);
     }
 }
 
-async function getArticles(req, res) {
+async function getArticles(req, res, next) {
     try {
         const userId = req.user.id;
 
@@ -27,11 +28,12 @@ async function getArticles(req, res) {
             articles,
         });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        // res.status(500).json({ message: err.message });
+        next(err);
     }
 }
 
-async function deleteArticle(req, res) {
+async function deleteArticle(req, res, next) {
     try {
         const userId = req.user.id;
         const { id } = req.params;
@@ -43,7 +45,8 @@ async function deleteArticle(req, res) {
             article,
         });
     } catch (err) {
-        res.status(404).json({ message: err.message });
+        // res.status(404).json({ message: err.message });
+        next(err);
     }
 }
 

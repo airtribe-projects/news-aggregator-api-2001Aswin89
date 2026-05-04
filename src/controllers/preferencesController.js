@@ -1,6 +1,6 @@
 const service = require("../services/preferencesService");
 
-async function getPreferences(req, res) {
+async function getPreferences(req, res, next) {
     try {
         const userId = req.user.id;
 
@@ -11,11 +11,12 @@ async function getPreferences(req, res) {
             preferences: prefs,
         });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        // res.status(500).json({ message: err.message });
+        next(err);
     }
 }
 
-async function upsertPreferences(req, res) {
+async function upsertPreferences(req, res, next) {
     try {
         const userId = req.user.id;
 
@@ -26,7 +27,8 @@ async function upsertPreferences(req, res) {
             preferences: prefs,
         });
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        // res.status(400).json({ message: err.message });
+        next(err);
     }
 }
 

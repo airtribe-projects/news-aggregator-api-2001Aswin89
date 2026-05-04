@@ -1,7 +1,7 @@
 const newsService = require("../services/newsService");
 const prefService = require("../services/preferencesService");
 
-async function getNews(req, res) {
+async function getNews(req, res, next) {
     try {
         const userId = req.user.id;
 
@@ -18,7 +18,8 @@ async function getNews(req, res) {
             articles: news,
         });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        // res.status(500).json({ message: err.message });
+        next(err);
     }
 }
 
