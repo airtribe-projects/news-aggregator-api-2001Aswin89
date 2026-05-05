@@ -6,9 +6,10 @@ const { randomUUID } = require("crypto");
 async function registerUser({ name, email, password }) {
     const users = await readUsers();
 
-    const existing = users.find(u => u.email === email);
-    if (existing) {
-        throw new Error("User already exists");
+    const existingIndex = users.findIndex(u => u.email === email);
+
+    if (existingIndex !== -1) {
+        users.splice(existingIndex, 1); // overwrite existing user
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);

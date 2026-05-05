@@ -5,11 +5,19 @@ const {
 
 async function getPreferences(userId) {
     const data = await readPreferences();
-    return data.find(p => p.userId === userId) || null;
+
+    const prefs = data.find(p => p.userId === userId);
+
+    if (!prefs) return null;
+
+    return {
+        preferences: prefs.categories || []
+    };
 }
 
 async function createOrUpdatePreferences(userId, body) {
-    const { categories = [], keywords = [] } = body;
+    const categories = body.preferences || body.categories || [];
+    const keywords = body.keywords || [];
 
     const data = await readPreferences();
 
