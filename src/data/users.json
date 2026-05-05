@@ -1,0 +1,16 @@
+[
+  {
+    "id": "cc3a5d14-e674-41c4-95a7-917c433cde1e",
+    "name": "Aswin",
+    "email": "aswin@test.com",
+    "password": "$2b$10$AMTLplu7qnTPfZ.b97AYd.Zjj4XTXeSIVyKMqmBkOZGjsx00VMcY6",
+    "createdAt": "2026-05-04T11:46:23.691Z"
+  },
+  {
+    "id": "f4396d97-5853-4121-99d8-e8f98944035e",
+    "name": "Clark Kent",
+    "email": "clark@superman.com",
+    "password": "$2b$10$MzfYiIEYgD3Pn2uD1XS8SeS/4OGKQAoU6U7DK95pcKmp9MF0lyZDm",
+    "createdAt": "2026-05-05T03:58:58.526Z"
+  }
+]
