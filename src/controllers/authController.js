@@ -1,18 +1,37 @@
 const authService = require("../services/authService");
+const prefService = require("../services/preferencesService");
+
 
 async function register(req, res, next) {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, preferences } = req.body;
 
-        const result = await authService.registerUser({ name, email, password });
+        if (!name || !email || !password) {
+            return res.status(400).json({ message: "Missing required fields" });
+        }
 
-        res.status(201).json({
-            message: "User registered successfully",
-            ...result,
+        const result = await authService.registerUser({
+            name,
+            email,
+            password
         });
+
+        if (preferences) {
+            try {
+                await prefService.createOrUpdatePreferences(result.user.id, {
+                    preferences
+                });
+            } catch (e) {
+                console.error("Preferences save failed:", e.message);
+            }
+        }
+
+        return res.status(200).json({
+            token: result.token
+        });
+
     } catch (err) {
-        // res.status(400).json({ message: err.message });
-        next(err);
+        return res.status(400).json({ message: err.message });
     }
 }
 
@@ -22,13 +41,11 @@ async function login(req, res, next) {
 
         const result = await authService.loginUser({ email, password });
 
-        res.json({
-            message: "Login successful",
-            ...result,
+        res.status(200).json({
+            token: result.token
         });
     } catch (err) {
-        // res.status(401).json({ message: err.message });
-        next(err);
+        res.status(401).json({ message: err.message });
     }
 }
 

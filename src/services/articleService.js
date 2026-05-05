@@ -4,7 +4,6 @@ const { randomUUID } = require("crypto");
 async function saveArticle(userId, article) {
     const data = await readArticles();
 
-    // prevent duplicate (same url per user)
     const exists = data.find(
         a => a.userId === userId && a.url === article.url
     );

@@ -12,13 +12,18 @@ async function getNews(req, res, next) {
             categories: prefs?.categories || [],
         });
 
-        res.json({
-            message: "News fetched successfully",
-            count: news.length,
-            articles: news,
+        const transformedArticles = news.map(article => ({
+            title: article.title,
+            description: article.description,
+            url: article.url,
+            source: article.source?.name || article.source
+        }));
+
+        res.status(200).json({
+            news: transformedArticles
         });
+
     } catch (err) {
-        // res.status(500).json({ message: err.message });
         next(err);
     }
 }

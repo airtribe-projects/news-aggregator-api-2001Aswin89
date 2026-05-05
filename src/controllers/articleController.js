@@ -11,7 +11,6 @@ async function saveArticle(req, res, next) {
             article,
         });
     } catch (err) {
-        // res.status(400).json({ message: err.message });
         next(err);
     }
 }
@@ -28,7 +27,6 @@ async function getArticles(req, res, next) {
             articles,
         });
     } catch (err) {
-        // res.status(500).json({ message: err.message });
         next(err);
     }
 }
@@ -45,7 +43,6 @@ async function deleteArticle(req, res, next) {
             article,
         });
     } catch (err) {
-        // res.status(404).json({ message: err.message });
         next(err);
     }
 }
