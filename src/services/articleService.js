@@ -16,6 +16,8 @@ async function saveArticle(userId, article) {
         id: randomUUID(),
         userId,
         ...article,
+        isRead: false,
+        isFavorite: false,
         createdAt: new Date().toISOString(),
     };
 
@@ -47,8 +49,64 @@ async function deleteArticle(userId, articleId) {
     return deleted[0];
 }
 
+async function markAsRead(userId, articleId) {
+    const data = await readArticles();
+
+    const article = data.find(
+        a => a.id === articleId && a.userId === userId
+    );
+
+    if (!article) {
+        throw new Error("Article not found");
+    }
+
+    article.isRead = true;
+
+    await writeArticles(data);
+
+    return article;
+}
+
+async function markAsFavorite(userId, articleId) {
+    const data = await readArticles();
+
+    const article = data.find(
+        a => a.id === articleId && a.userId === userId
+    );
+
+    if (!article) {
+        throw new Error("Article not found");
+    }
+
+    article.isFavorite = true;
+
+    await writeArticles(data);
+
+    return article;
+}
+
+async function getReadArticles(userId) {
+    const data = await readArticles();
+
+    return data.filter(
+        a => a.userId === userId && a.isRead
+    );
+}
+
+async function getFavoriteArticles(userId) {
+    const data = await readArticles();
+
+    return data.filter(
+        a => a.userId === userId && a.isFavorite
+    );
+}
+
 module.exports = {
     saveArticle,
     getUserArticles,
     deleteArticle,
+    markAsRead,
+    markAsFavorite,
+    getReadArticles,
+    getFavoriteArticles,
 };
