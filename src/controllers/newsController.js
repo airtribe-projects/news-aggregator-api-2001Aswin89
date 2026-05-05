@@ -28,6 +28,32 @@ async function getNews(req, res, next) {
     }
 }
 
+async function searchNews(req, res, next) {
+    try {
+        const userId = req.user.id;
+        const keyword = req.params.keyword;
+
+
+        const prefs = await prefService.getPreferences(userId);
+
+        const news = await newsService.fetchNews({
+            keywords: prefs?.keywords || [],
+            categories: prefs?.categories || [],
+        });
+
+
+        const filtered = newsService.searchArticles(news, keyword);
+
+        res.status(200).json({
+            news: filtered
+        });
+
+    } catch (err) {
+        next(err);
+    }
+}
+
 module.exports = {
     getNews,
+    searchNews
 };

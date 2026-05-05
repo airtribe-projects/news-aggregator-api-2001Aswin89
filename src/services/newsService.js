@@ -43,4 +43,14 @@ async function fetchNews({ keywords = [], categories = [] }) {
 
     return transformed;
 }
-module.exports = { fetchNews };
+
+function searchArticles(articles, keyword) {
+    const lower = keyword.toLowerCase();
+
+    return articles.filter(article =>
+        article.title?.toLowerCase().includes(lower) ||
+        article.description?.toLowerCase().includes(lower)
+    );
+}
+
+module.exports = { fetchNews, searchArticles };
