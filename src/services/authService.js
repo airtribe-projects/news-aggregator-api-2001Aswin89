@@ -9,7 +9,7 @@ async function registerUser({ name, email, password }) {
     const existingIndex = users.findIndex(u => u.email === email);
 
     if (existingIndex !== -1) {
-        users.splice(existingIndex, 1); // overwrite existing user
+        users.splice(existingIndex, 1);
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
