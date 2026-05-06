@@ -55,5 +55,27 @@
     "keywords": [],
     "createdAt": "2026-05-05T11:41:06.343Z",
     "updatedAt": "2026-05-05T11:41:06.567Z"
+  },
+  {
+    "userId": "97f2417d-00d2-4fc0-8435-65e20fc56255",
+    "categories": [
+      "movies",
+      "comics",
+      "games"
+    ],
+    "keywords": [],
+    "createdAt": "2026-05-05T14:13:45.980Z",
+    "updatedAt": "2026-05-05T14:13:46.227Z"
+  },
+  {
+    "userId": "55601706-1c00-4c43-89ed-231919a5aa5d",
+    "categories": [
+      "movies",
+      "comics",
+      "games"
+    ],
+    "keywords": [],
+    "createdAt": "2026-05-06T04:22:34.812Z",
+    "updatedAt": "2026-05-06T04:22:35.000Z"
   }
 ]
