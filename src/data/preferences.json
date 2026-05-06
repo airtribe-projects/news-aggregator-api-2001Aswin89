@@ -1,0 +1,81 @@
+[
+  {
+    "userId": "cc3a5d14-e674-41c4-95a7-917c433cde1e",
+    "categories": [
+      "technology",
+      "business"
+    ],
+    "keywords": [
+      "AI",
+      "startups"
+    ],
+    "createdAt": "2026-05-04T13:57:29.688Z",
+    "updatedAt": "2026-05-04T17:44:29.407Z"
+  },
+  {
+    "userId": "93764480-a0f8-45a9-95ca-a859fb2ae96d",
+    "categories": [
+      "movies",
+      "comics",
+      "games"
+    ],
+    "keywords": [],
+    "createdAt": "2026-05-04T17:51:03.138Z",
+    "updatedAt": "2026-05-05T03:52:37.072Z"
+  },
+  {
+    "userId": "be337728-4881-4874-a24f-ca0a51368847",
+    "categories": [
+      "movies",
+      "comics",
+      "games"
+    ],
+    "keywords": [],
+    "createdAt": "2026-05-05T03:53:58.502Z",
+    "updatedAt": "2026-05-05T03:57:34.937Z"
+  },
+  {
+    "userId": "f4396d97-5853-4121-99d8-e8f98944035e",
+    "categories": [
+      "movies",
+      "comics",
+      "games"
+    ],
+    "keywords": [],
+    "createdAt": "2026-05-05T03:58:58.540Z",
+    "updatedAt": "2026-05-05T03:58:58.752Z"
+  },
+  {
+    "userId": "7de8e01f-3039-4f1e-8c6d-1c4410e5e592",
+    "categories": [
+      "movies",
+      "comics",
+      "games"
+    ],
+    "keywords": [],
+    "createdAt": "2026-05-05T11:41:06.343Z",
+    "updatedAt": "2026-05-05T11:41:06.567Z"
+  },
+  {
+    "userId": "97f2417d-00d2-4fc0-8435-65e20fc56255",
+    "categories": [
+      "movies",
+      "comics",
+      "games"
+    ],
+    "keywords": [],
+    "createdAt": "2026-05-05T14:13:45.980Z",
+    "updatedAt": "2026-05-05T14:13:46.227Z"
+  },
+  {
+    "userId": "55601706-1c00-4c43-89ed-231919a5aa5d",
+    "categories": [
+      "movies",
+      "comics",
+      "games"
+    ],
+    "keywords": [],
+    "createdAt": "2026-05-06T04:22:34.812Z",
+    "updatedAt": "2026-05-06T04:22:35.000Z"
+  }
+]
